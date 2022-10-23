@@ -49,14 +49,14 @@ getInput(0);
 
 // Delete Number
 document.getElementById("delete").addEventListener("click", function () {
-  const input = document.getElementById("input-pin");
-  input.value = input.value.slice(0, -1);
+  const deleteNumber = document.getElementById("input-pin");
+  deleteNumber.value = input.value.slice(0, -1);
 });
 
 // Clear Number
 document.getElementById("clear").addEventListener("click", function () {
-  const input = document.getElementById("input-pin");
-  input.value = input.value.slice(0, -1);
+  const clearNumber = document.getElementById("input-pin");
+  clearNumber.value = "";
 });
 
 // const inputValue = document.getElementById("input-pin").value;
