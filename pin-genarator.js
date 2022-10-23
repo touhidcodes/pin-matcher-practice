@@ -1,13 +1,13 @@
-// Common Functions
-function getElementByElementId(elementId) {
-  document.getElementById(elementId);
-}
+// // Common Functions
+// function getElementByElementId(elementId) {
+//   document.getElementById(elementId);
+// }
 
-function emptyString(elementId) {
-  const string = document.getElementById(elementId);
-  const emptyString = " ";
-  string.value = emptyString;
-}
+// function emptyString(elementId) {
+//   const string = document.getElementById(elementId);
+//   const emptyString = " ";
+//   string.value = emptyString;
+// }
 
 // Generate Pin Function
 function generatePin(elementId) {
@@ -50,7 +50,7 @@ getInput(0);
 // Delete Number
 document.getElementById("delete").addEventListener("click", function () {
   const deleteNumber = document.getElementById("input-pin");
-  deleteNumber.value = input.value.slice(0, -1);
+  deleteNumber.value = deleteNumber.value.slice(0, -1);
 });
 
 // Clear Number
