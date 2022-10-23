@@ -9,6 +9,14 @@
 //   string.value = emptyString;
 // }
 
+function displayBlock(elementId) {
+  document.getElementById(elementId).style.display = "block";
+}
+
+function displayNone(elementId) {
+  document.getElementById(elementId).style.display = "none";
+}
+
 // Generate Pin Function
 function generatePin(elementId) {
   const outputPin = document.getElementById(elementId);
@@ -57,12 +65,33 @@ document.getElementById("delete").addEventListener("click", function () {
 document.getElementById("clear").addEventListener("click", function () {
   const clearNumber = document.getElementById("input-pin");
   clearNumber.value = "";
+  displayNone("pin-true");
+  displayNone("pin-false");
 });
 
-// const inputValue = document.getElementById("input-pin").value;
+// Submit Action
+document.getElementById("submit-btn").addEventListener("click", function () {
+  const inputValue = document.getElementById("input-pin").value;
+  const outputValue = document.getElementById("input-pin").value;
 
-// if (inputValue.length == "") {
-//   alert("Number field can not be empty ");
-// } else if (inputValue.length < 4) {
-//   alert("Number can not be grater than 4");
-// }
+  if (inputValue.length == "") {
+    alert("Number field can not be empty ");
+  } else if (inputValue.length < 4) {
+    alert("Number can not be grater than 4");
+  }
+
+  pinMatcher();
+
+  outputValue = "";
+});
+
+function pinMatcher() {
+  const inputPin = document.getElementById("input-pin").value;
+  const randomPin = document.getElementById("output-pin").value;
+  if (randomPin == inputPin) {
+    displayBlock("pin-true");
+  } else {
+    displayBlock("pin-false");
+    displayNone("pin-true");
+  }
+}
