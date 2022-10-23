@@ -100,11 +100,15 @@ input[type="text"]:focus {
 .notify-section {
   width: 35%;
   margin: 0 auto;
+  /* display: none; */
 }
 .action-left {
   color: #ff3c5f;
   margin-top: 10px;
 }
 #output-pin {
+  font-size: 25px;
+}
+#input-pin {
   font-size: 25px;
 }
