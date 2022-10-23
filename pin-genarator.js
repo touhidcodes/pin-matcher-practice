@@ -1,14 +1,4 @@
 // // Common Functions
-// function getElementByElementId(elementId) {
-//   document.getElementById(elementId);
-// }
-
-// function emptyString(elementId) {
-//   const string = document.getElementById(elementId);
-//   const emptyString = " ";
-//   string.value = emptyString;
-// }
-
 function displayBlock(elementId) {
   document.getElementById(elementId).style.display = "block";
 }
@@ -59,39 +49,61 @@ getInput(0);
 document.getElementById("delete").addEventListener("click", function () {
   const deleteNumber = document.getElementById("input-pin");
   deleteNumber.value = deleteNumber.value.slice(0, -1);
+
+  displayNone("pin-true");
+  displayNone("pin-false");
 });
 
 // Clear Number
 document.getElementById("clear").addEventListener("click", function () {
   const clearNumber = document.getElementById("input-pin");
   clearNumber.value = "";
+
   displayNone("pin-true");
   displayNone("pin-false");
 });
 
-// Submit Action
-document.getElementById("submit-btn").addEventListener("click", function () {
-  const inputValue = document.getElementById("input-pin").value;
-  const outputValue = document.getElementById("input-pin").value;
-
-  if (inputValue.length == "") {
-    alert("Number field can not be empty ");
-  } else if (inputValue.length < 4) {
-    alert("Number can not be grater than 4");
-  }
-
-  pinMatcher();
-
-  outputValue = "";
-});
-
+// Submit Action function
 function pinMatcher() {
   const inputPin = document.getElementById("input-pin").value;
   const randomPin = document.getElementById("output-pin").value;
+
   if (randomPin == inputPin) {
     displayBlock("pin-true");
+    displayNone("pin-false");
   } else {
     displayBlock("pin-false");
     displayNone("pin-true");
   }
+}
+
+// Submit Action
+document.getElementById("submit-btn").addEventListener("click", function () {
+  const inputValue = document.getElementById("input-pin").value;
+
+  if (inputValue == "") {
+    alert("Number field can not be empty ");
+  } else if (inputValue.length > 4) {
+    alert("Number can not be grater than 4");
+  }
+
+  pinMatcher();
+  tryCount();
+});
+
+//  Try Count function
+function tryCount() {
+  const count = document.getElementById("try-count").innerHTML;
+  document.getElementById("try-count").innerHTML -= 1;
+
+  if (count == "1") {
+    disableBtn();
+  }
+}
+
+function disableBtn() {
+  const disableBtn = document.getElementById("submit-btn");
+  disableBtn.style.cursor = "not-allowed";
+  disableBtn.setAttribute("disabled", "true");
+  disableBtn.style.title = "Please Reload Page Again";
 }
